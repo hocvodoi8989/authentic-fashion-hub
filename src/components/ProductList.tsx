@@ -60,7 +60,7 @@ const ProductList = async ({
         >
           <div className="relative w-full h-80">
             <Image
-              src={product.media?.mainMedia?.image?.url || "/product.png"}
+              src={product.media?.mainMedia?.image?.url || "/icons/product.png"}
               alt=""
               fill
               sizes="25vw"
@@ -68,7 +68,7 @@ const ProductList = async ({
             />
             {product.media?.items && (
               <Image
-                src={product.media?.items[1]?.image?.url || "/product.png"}
+                src={product.media?.items[1]?.image?.url || "/icons/product.png"}
                 alt=""
                 fill
                 sizes="25vw"
@@ -78,7 +78,7 @@ const ProductList = async ({
           </div>
           <div className="flex justify-between">
             <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">${product.price?.price}</span>
+            <span className="font-semibold">{product.price?.formatted?.price}</span>
           </div>
           {product.additionalInfoSections && (
             <div

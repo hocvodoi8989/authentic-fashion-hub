@@ -11,7 +11,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
   const cat = await wixClient.collections.getCollectionBySlug(
     searchParams.cat || "all-products"
   );
-
+  
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* CAMPAIGN */}
@@ -26,7 +26,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
           </button>
         </div>
         <div className="relative w-1/3">
-          <Image src="/woman.png" alt="" fill className="object-contain" />
+          <Image src="/icons/woman.png" alt="" fill className="object-contain" />
         </div>
       </div>
       {/* FILTER */}
