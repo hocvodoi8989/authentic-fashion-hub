@@ -25,7 +25,7 @@ const CategoryList = async () => {
                 className="object-cover"
               />
             </div>
-            <h1 className="mt-8 font-light text-xl tracking-wide">
+            <h1 className="mt-8 font-bold text-xl tracking-wide">
               {item.name}
             </h1>
           </Link>

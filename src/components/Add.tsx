@@ -19,15 +19,9 @@ const Add = ({
 
   const handleQuantity = (type: "i" | "d") => {
     if (type === "d" && quantity > 1) {
-      console.log("2222222222");
-      console.log(quantity);
-
       setQuantity((prev) => prev - 1);
     }
     if (type === "i" && quantity < stockNumber) {
-      console.log("1111111111");
-      console.log(quantity);
-
       setQuantity((prev) => prev + 1);
     }
   };

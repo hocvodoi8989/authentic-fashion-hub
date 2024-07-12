@@ -5,6 +5,7 @@ import { LoginState } from "@wix/sdk";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useState } from "react";
+import Image from "next/image";
 
 enum MODE {
   LOGIN = "LOGIN",
@@ -32,6 +33,7 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const formTitle =
     mode === MODE.LOGIN
@@ -172,13 +174,22 @@ const LoginPage = () => {
         {mode === MODE.LOGIN || mode === MODE.REGISTER ? (
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-700">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              className="ring-2 ring-gray-300 rounded-md p-4"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="flex ring-2 ring-gray-300 rounded-md p-4">
+              <input
+                type={!showPassword ? "password" : "text"}
+                name="password"
+                placeholder="Enter your password"
+                className="outline-none bg-white"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Image
+                src={`/icons/eye-${showPassword ? "show" : "hide"}.png`}
+                alt="eye"
+                width={20}
+                height={20}
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </div>
           </div>
         ) : null}
         {mode === MODE.LOGIN && (
