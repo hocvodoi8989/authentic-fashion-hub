@@ -1,4 +1,3 @@
-
 import { wixClientServer } from "@/lib/wixClientServer";
 import { products } from "@wix/stores";
 import Image from "next/image";
@@ -35,7 +34,7 @@ const ProductList = async ({
         ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
         : 0
     );
-//   .find();
+  //   .find();
 
   if (searchParams?.sort) {
     const [sortType, sortBy] = searchParams.sort.split(" ");
@@ -49,7 +48,7 @@ const ProductList = async ({
   }
 
   const res = await productQuery.find();
-
+  // console.log(res)
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {res.items.map((product: products.Product) => (
@@ -68,7 +67,9 @@ const ProductList = async ({
             />
             {product.media?.items && (
               <Image
-                src={product.media?.items[1]?.image?.url || "/icons/product.png"}
+                src={
+                  product.media?.items[1]?.image?.url || "/icons/product.png"
+                }
                 alt=""
                 fill
                 sizes="25vw"
@@ -78,7 +79,9 @@ const ProductList = async ({
           </div>
           <div className="flex justify-between">
             <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">{product.price?.formatted?.price}</span>
+            <span className="font-semibold">
+              {product.price?.formatted?.price}
+            </span>
           </div>
           {product.additionalInfoSections && (
             <div
