@@ -12,8 +12,6 @@ export const updateUser = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
 
-  console.log(username);
-
   try {
     const response = await wixClient.members.updateMember(id, {
       contact: {

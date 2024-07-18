@@ -72,6 +72,7 @@ const Slider = () => {
             <div className="h-1/2 xl:w-1/2 xl:h-full relative">
               <Image
                 src={slide.img}
+                priority
                 alt=""
                 fill
                 sizes="100%"
