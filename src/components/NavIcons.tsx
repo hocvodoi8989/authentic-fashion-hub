@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
@@ -51,6 +51,7 @@ const NavIcons = () => {
     setIsLoading(true);
     Cookies.remove("refreshToken");
     const { logoutUrl } = await wixClient.auth.logout(window.location.href);
+    console.log(logoutUrl)
     setIsLoading(false);
     setIsProfileOpen(false);
     router.push(logoutUrl);
@@ -60,13 +61,13 @@ const NavIcons = () => {
     <div>
       <Link href="/profile">Profile</Link>
       <div className="mt-2 cursor-pointer" onClick={handleLogout}>
-        {isLoading ? "Logging out" : "Logout"}
+        {isLoading ? <Loading /> : "Logout"}
       </div>
     </div>
   ) : (
     <Link href={"/login"}>Login</Link>
   );
-
+  
   const { cart, counter, getCart } = useCartStore();
 
   useEffect(() => {
@@ -75,8 +76,7 @@ const NavIcons = () => {
 
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
-      <Loading />
-      <Popover placement="bottom" content={profile}>
+      <Popover placement="bottom" content={profile} trigger="click">
         <Image
           src="/icons/profile.png"
           alt=""
@@ -84,7 +84,7 @@ const NavIcons = () => {
           height={22}
           className="cursor-pointer"
           // onClick={login}
-          onClick={handleProfile}
+          // onClick={handleProfile}
         />
       </Popover>
       <Image
